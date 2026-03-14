@@ -58,7 +58,7 @@ export class Devo implements OnInit {
   }
 
   onDateChange(event: any) {
-    this.selectedDate = event.target.value;   // ← FALTABA ESTO
+    this.selectedDate = event.target.value;   
     this.loadDevo(this.selectedDate);
   }
 

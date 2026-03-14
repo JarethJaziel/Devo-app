@@ -1,6 +1,6 @@
 <div class="page" *ngIf="devoRes as res; else loading">
 
-  <h1 class="title">Devocional Diario</h1>
+  <h1 class="title">Devocional Diario {{ selectedDate }}</h1>
 
   <!-- CONTROLES DE FECHA -->
   <div class="controls-card">
@@ -49,8 +49,8 @@
 
       <div class="btn-row">
         <button class="btn copy" (click)="copyToClipboard(res.formatWeb)">Copiar</button>
-        
-    </div>
+
+      </div>
     </div>
 
   </div>
