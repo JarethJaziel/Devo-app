@@ -1,0 +1,31 @@
+<div
+    class="bg-white border border-amber-200 rounded-xl shadow-sm p-4 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+
+    <!-- anterior -->
+    <button (click)="prevDay()"
+        class="flex items-center justify-center gap-1 px-3 py-2 rounded-lg text-amber-700 hover:bg-amber-100 transition w-full sm:w-auto">
+
+        <lucide-icon name="chevron-left" class="w-4 h-4"></lucide-icon>
+        Anterior
+    </button>
+
+    <!-- selector fecha -->
+    <div class="flex items-center justify-center gap-3 w-full sm:w-auto">
+
+        <lucide-icon name="calendar" class="w-5 h-5 text-amber-600"></lucide-icon>
+
+        <input type="date" [value]="selectedDate" (change)="onDateChange($event)"
+            class="border border-amber-200 rounded-lg px-3 py-1.5 text-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-300 w-full sm:w-auto">
+
+    </div>
+
+    <!-- siguiente -->
+    <button (click)="nextDay()"
+        class="flex items-center justify-center gap-1 px-3 py-2 rounded-lg text-amber-700 hover:bg-amber-100 transition w-full sm:w-auto">
+
+        Siguiente
+        <lucide-icon name="chevron-right" class="w-4 h-4"></lucide-icon>
+
+    </button>
+
+</div>

@@ -1,0 +1,50 @@
+<div class="min-h-screen bg-amber-50 py-10 px-4">
+
+    <div class="max-w-3xl mx-auto space-y-8 animate-fade-in">
+
+        <!-- header -->
+
+        <div class="text-center space-y-2">
+
+            <h1 class="text-3xl font-bold text-amber-700 flex justify-center items-center gap-2">
+
+                <lucide-icon name="sun" class="w-6 h-6"></lucide-icon>
+
+                Devocional Diario
+
+            </h1>
+
+            <p class="text-gray-500 text-sm">
+                Reflexión y audio para cada día
+            </p>
+
+        </div>
+
+        <!-- controles -->
+
+        <app-date-controls [selectedDate]="selectedDate" (dateChange)="changeDate($event)">
+        </app-date-controls>
+
+        <!-- contenido -->
+
+        @if (devo$ | async; as res) {
+
+        <app-devo-card [devo]="res.data">
+        </app-devo-card>
+
+        <app-devo-preview [whatsapp]="res.formatWhatsapp" [web]="res.formatWeb">
+        </app-devo-preview>
+
+        } @else {
+
+        <div class="bg-white border border-amber-200 rounded-xl p-6 text-center text-gray-500 shadow-sm">
+
+            Cargando devocional...
+
+        </div>
+
+        }
+
+    </div>
+
+</div>

@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { Devo } from './pages/devo/devo';
+import { DevoPage } from './view/devo/devo.page/devo.page';
 
 export const routes: Routes = [
   {
     path: '',
-    component: Devo
+    component: DevoPage
   }
 ];

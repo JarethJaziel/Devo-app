@@ -1,0 +1,84 @@
+<div class="space-y-6 animate-fade-in">
+
+    <h3 class="text-xl font-semibold text-amber-700 flex items-center gap-2">
+        Formatos de publicación
+    </h3>
+
+    <!-- WHATSAPP -->
+
+    <div class="bg-white border border-amber-200 rounded-xl p-5 shadow-sm transition hover:shadow-md space-y-4">
+
+        <div class="flex justify-between items-center">
+
+            <span class="font-semibold text-gray-700">
+                WhatsApp
+            </span>
+
+            <div class="flex gap-2">
+
+                <button (click)="copy(whatsapp)"
+                    class="flex items-center gap-1 text-sm px-3 py-1.5 rounded-lg bg-amber-100 text-amber-700 hover:bg-amber-200 transition">
+
+                    <lucide-icon name="copy" class="w-4 h-4"></lucide-icon>
+
+                    Copiar
+                </button>
+
+                <button (click)="shareWhatsApp(whatsapp)"
+                    class="flex items-center gap-1 text-sm px-3 py-1.5 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition">
+
+                    <lucide-icon name="send" class="w-4 h-4"></lucide-icon>
+
+                    Enviar
+                </button>
+
+            </div>
+
+        </div>
+
+        <pre class="text-sm bg-amber-50 p-3 rounded-lg overflow-auto text-gray-700">
+{{ whatsapp }}
+</pre>
+
+    </div>
+
+
+    <!-- WEB -->
+
+    <div class="bg-white border border-amber-200 rounded-xl p-5 shadow-sm transition hover:shadow-md space-y-4">
+
+        <div class="flex justify-between items-center">
+
+            <span class="font-semibold text-gray-700">
+                Web / Redes
+            </span>
+
+            <div class="flex gap-2">
+
+                <button (click)="copy(web)"
+                    class="flex items-center gap-1 text-sm px-3 py-1.5 rounded-lg bg-amber-100 text-amber-700 hover:bg-amber-200 transition">
+
+                    <lucide-icon name="copy" class="w-4 h-4"></lucide-icon>
+
+                    Copiar
+                </button>
+
+                <button (click)="share(web)"
+                    class="flex items-center gap-1 text-sm px-3 py-1.5 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition">
+
+                    <lucide-icon name="share-2" class="w-4 h-4"></lucide-icon>
+
+                    Compartir
+                </button>
+
+            </div>
+
+        </div>
+
+        <pre class="text-sm bg-amber-50 p-3 rounded-lg overflow-auto text-gray-700">
+{{ web }}
+</pre>
+
+    </div>
+
+</div>
