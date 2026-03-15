@@ -35,7 +35,7 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-      - name: Deploy with ngh
-        run: npx ngh --dir=dist/npd-frontend/browser
+      - name: Deploy
+        run: npx angular-cli-ghpages --dir=dist/npd-frontend/browser
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
