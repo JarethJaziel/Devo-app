@@ -34,4 +34,10 @@ export class DevoPage {
     this.loadDevo(date);
   }
 
+  goToday() {
+    const today = new Date().toISOString().split('T')[0];
+    this.changeDate(today);
+  }
+
+
 }
