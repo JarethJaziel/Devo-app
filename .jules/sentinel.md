@@ -1,0 +1,4 @@
+## 2023-10-27 - Angular Sanitization Bypass via DOM Manipulation
+**Vulnerability:** A DOM XSS vulnerability existed where user-provided input (the audio URL) was assigned directly to `href` of a dynamically created anchor element (`document.createElement('a').href = url`), leading to potential execution of `javascript:` URIs.
+**Learning:** Manual DOM manipulation (creating elements and assigning properties like `href` or `src`) bypasses Angular's built-in DomSanitizer, which normally protects bindings in templates (e.g. `[href]="url"`). When dynamically setting links in code, manual validation must be performed.
+**Prevention:** Always validate protocols (e.g., ensuring `http:` or `https:`) before assigning URLs to anchor `href` attributes in manual DOM manipulations, or use Angular's built-in template binding which includes sanitization.
