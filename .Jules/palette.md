@@ -1,0 +1,3 @@
+## 2026-10-13 - Interactive Headings Navigation Improvement
+**Learning:** Found an accessibility anti-pattern where a semantic `<h1>` was used as an interactive element (`(click)` event attached directly to the heading). This is a common issue in Angular apps that prevents proper keyboard focus routing and fails to announce the interactive nature of the element to screen readers.
+**Action:** Always separate heading semantics from interactivity by nesting a `<button>` inside the heading. Ensure the button has proper focus indicators (e.g., Tailwind's `focus-visible:ring-2`), an `aria-label`, and `title` attributes so the interaction is properly announced and discoverable for keyboard and screen reader users.
