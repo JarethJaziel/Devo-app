@@ -4,14 +4,16 @@
 
         <!-- header -->
 
-        <div class="text-center space-y-2">
+        <div class="text-center space-y-2 flex flex-col items-center">
 
-            <h1 (click)="goToday()"
-                class="text-3xl font-bold text-amber-700 flex justify-center items-center gap-2 cursor-pointer hover:text-amber-800 transition">
-
-                <lucide-icon name="sun" class="w-6 h-6"></lucide-icon>
-                Devocional Diario
-
+            <h1 class="text-3xl font-bold text-amber-700">
+                <button (click)="goToday()"
+                    aria-label="Volver al devocional de hoy"
+                    title="Volver al devocional de hoy"
+                    class="flex justify-center items-center gap-2 cursor-pointer hover:text-amber-800 transition focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none rounded-lg px-4 py-2">
+                    <lucide-icon name="sun" class="w-6 h-6"></lucide-icon>
+                    Devocional Diario
+                </button>
             </h1>
 
             <p class="text-gray-500 text-sm">
