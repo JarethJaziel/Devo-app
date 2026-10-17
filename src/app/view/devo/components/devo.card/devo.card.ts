@@ -14,6 +14,12 @@ export class DevoCard {
   @Input() devo!: Devo;
 
   downloadAudio(url: string) {
+    // 🛡️ Sentinel: Validate URL protocol to prevent XSS via javascript: or data: URIs while supporting relative URLs
+    if (/^(javascript|data|vbscript):/i.test(url.trim())) {
+      console.error('Security Error: Invalid audio URL protocol');
+      return;
+    }
+
     const link = document.createElement('a');
     link.href = url;
     link.download = '';
