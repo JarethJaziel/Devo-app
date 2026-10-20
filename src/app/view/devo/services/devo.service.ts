@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DevoResponse } from '../models/devo.model';
 
@@ -10,10 +10,13 @@ export class DevoService {
   constructor(private http: HttpClient) { }
 
   getDevo(fecha: string): Observable<DevoResponse> {
-    return this.http.get<DevoResponse>(`${this.apiUrl}/${fecha}`);
+    return this.http.get<DevoResponse>(`${this.apiUrl}/${encodeURIComponent(fecha)}`);
   }
 
   getRange(fromDate: string, toDate: string): Observable<DevoResponse[]> {
-    return this.http.get<DevoResponse[]>(`${this.apiUrl}/range?fromDate=${fromDate}&toDate=${toDate}`);
+    const params = new HttpParams()
+      .set('fromDate', fromDate)
+      .set('toDate', toDate);
+    return this.http.get<DevoResponse[]>(`${this.apiUrl}/range`, { params });
   }
 }
