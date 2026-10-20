@@ -1,0 +1,4 @@
+## 2024-05-24 - [XSS via dynamically created anchor tags bypassing Angular sanitization]
+**Vulnerability:** A cross-site scripting (XSS) vulnerability was found in `devo.card.ts` where an anchor (`<a>`) tag is created dynamically with its `href` attribute set directly to a user-controlled URL (`audioUrl`) and immediately clicked.
+**Learning:** Even though Angular provides robust built-in sanitization for templates (e.g., when binding to `[href]`), this protection does not extend to DOM elements created and manipulated directly using native browser APIs like `document.createElement('a')` within component logic.
+**Prevention:** Always validate and sanitize URLs before assigning them to native DOM elements created dynamically, ensuring the protocol is explicitly allowed (e.g., `http:` or `https:`) and not a dangerous URI scheme like `javascript:`.
