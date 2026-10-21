@@ -1,3 +1,5 @@
+import { Calendar } from 'lucide-angular';
+import { LucideAngularModule, ChevronLeft, ChevronRight } from 'lucide-angular';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DateControls } from './date.controls';
@@ -8,7 +10,7 @@ describe('DateControls', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DateControls]
+      imports: [DateControls, LucideAngularModule.pick({ ChevronLeft: ChevronLeft, ChevronRight: ChevronRight, Calendar: Calendar })]
     })
     .compileComponents();
 

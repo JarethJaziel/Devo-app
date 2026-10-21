@@ -14,6 +14,11 @@ export class DevoCard {
   @Input() devo!: Devo;
 
   downloadAudio(url: string) {
+    // SECURITY: Validate URL scheme to prevent DOM XSS via arbitrary schemes (like javascript:)
+    if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('/')) {
+      console.error('Invalid URL scheme for download');
+      return;
+    }
     const link = document.createElement('a');
     link.href = url;
     link.download = '';
