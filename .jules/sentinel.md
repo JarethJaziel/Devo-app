@@ -1,0 +1,4 @@
+## 2025-03-05 - [XSS via Dynamic File Download href]
+**Vulnerability:** XSS risk via unvalidated API responses in dynamic file download features. In `src/app/view/devo/components/devo.card/devo.card.ts`, an `<a>` element was created and its `href` was set to an unsanitized URL (`url`) before programmatically clicking it.
+**Learning:** Even though the URL is meant to be a download link for audio (`devo.audioUrl`), it comes from an external API response. An attacker modifying the API response could inject a `javascript:` or `data:` URL, which would execute when the user clicks the "Download" button.
+**Prevention:** Always validate that URLs used for programmatic navigation or dynamic anchors (like downloads) start with a safe scheme (`http://` or `https://`) before assigning them to `link.href` or passing them to navigation methods.
