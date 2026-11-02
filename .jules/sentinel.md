@@ -1,0 +1,4 @@
+## 2026-11-02 - [Fix DOM-based XSS via unsafe URL protocols]
+**Vulnerability:** A DOM-based XSS vulnerability existed in `downloadAudio(url: string)` when constructing an anchor tag `href` directly from the `url` parameter. Malicious API responses could inject `javascript:` URIs.
+**Learning:** Naively validating `new URL(url)` using a strict `http:`/`https:` allowlist breaks both relative URLs (which require a base URL like `window.location.origin` to parse) and safe data protocols (`blob:`, `data:`).
+**Prevention:** Use a denylist approach against known unsafe protocols (`javascript:`, `vbscript:`, `data:` - wait, wait... `data:` might be safe or unsafe depending on context, but `javascript:` and `vbscript:` are definitely unsafe). Actually, `new URL(url, window.location.origin)` combined with blocking unsafe execution protocols is the safer pattern for DOM XSS prevention.
