@@ -1,0 +1,4 @@
+## 2026-11-06 - [Prevent DOM-based XSS in downloadAudio]
+**Vulnerability:** DOM-based Cross-Site Scripting (XSS) vulnerability was found in the `downloadAudio` function of `src/app/view/devo/components/devo.card/devo.card.ts`. The `url` parameter was directly assigned to an anchor tag's `href` property without validation, allowing the potential execution of malicious scripts via `javascript:` or `vbscript:` protocols.
+**Learning:** The URL must be validated and sanitized before assigning it to DOM sinks like `href` or `src` attributes. A try/catch block is necessary around URL parsing to ensure proper execution. Using `new URL(url, window.location.origin)` accurately parses relative and absolute URLs, and allows protocol validation.
+**Prevention:** Always parse URLs before assignment using `new URL()` and explicitly check and reject unsafe protocols such as `javascript:`, `data:`, and `vbscript:`.
