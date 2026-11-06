@@ -14,9 +14,19 @@ export class DevoCard {
   @Input() devo!: Devo;
 
   downloadAudio(url: string) {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = '';
-    link.click();
+    try {
+      // Security fix: Validate URL to prevent DOM-based XSS
+      const parsedUrl = new URL(url, window.location.origin);
+      if (['javascript:', 'data:', 'vbscript:'].includes(parsedUrl.protocol)) {
+        console.error('Security Warning: Blocked potentially unsafe URL');
+        return;
+      }
+      const link = document.createElement('a');
+      link.href = parsedUrl.href;
+      link.download = '';
+      link.click();
+    } catch (e) {
+      console.error('Security Error: Invalid URL format');
+    }
   }
 }
