@@ -14,6 +14,17 @@ export class DevoCard {
   @Input() devo!: Devo;
 
   downloadAudio(url: string) {
+    // Security Fix: Prevent DOM-based XSS by validating URL protocol
+    try {
+      const parsedUrl = new URL(url, window.location.origin);
+      const deniedProtocols = ['javascript:', 'vbscript:', 'data:'];
+      if (deniedProtocols.includes(parsedUrl.protocol)) {
+        return;
+      }
+    } catch (e) {
+      return;
+    }
+
     const link = document.createElement('a');
     link.href = url;
     link.download = '';
