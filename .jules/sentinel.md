@@ -1,0 +1,4 @@
+## 2024-11-10 - DOM-based XSS via Dynamic Href Assignment
+**Vulnerability:** DOM-based XSS vulnerability found in `src/app/view/devo/components/devo.card/devo.card.ts` where user-controlled input (`url`) was assigned directly to `link.href` and subsequently triggered via `link.click()`.
+**Learning:** Directly assigning arbitrary strings to attributes like `href` without proper validation allows execution of harmful protocols like `javascript:`, `vbscript:`, or `data:`. Parsing the URL is essential for secure protocol checking. Furthermore, we need to assign the original URL string, not the parsed `href`, back to the element's attribute to preserve Angular's `<base href>` behavior for resolving relative paths.
+**Prevention:** Always validate and sanitize user-provided URLs before dynamically assigning them to sensitive DOM attributes. Use `new URL(url, window.location.origin)` to parse the URL and verify the `protocol` against a denylist of dangerous protocols.
